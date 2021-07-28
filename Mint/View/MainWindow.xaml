@@ -60,6 +60,20 @@
                     </StackPanel>
                 </ListViewItem>
 
+                <ListViewItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/bell_icon.png" Width="15" Margin="15 10 0 10"/>
+                        <TextBlock Text="Budget" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Images/transaction_icon.png" Width="15" Margin="15 10 0 10"/>
+                        <TextBlock Text="Transactions" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                    </StackPanel>
+                </ListViewItem>
+
             </ListView>
         </StackPanel>
     </Grid>
