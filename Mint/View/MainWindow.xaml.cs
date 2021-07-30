@@ -23,7 +23,24 @@ namespace Mint
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ListBoxItem1_Selected(object sender, RoutedEventArgs e)
+        {
             frame.Navigate(new Uri("View/Page1.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void ListBoxItem2_Selected(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new Uri("View/Page2.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void txtSearchBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                MessageBox.Show(((TextBox)sender).Text);
+            }
         }
     }
 }

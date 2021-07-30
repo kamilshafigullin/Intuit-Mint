@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:Mint"
         xmlns:view="clr-namespace:Mint.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="550" Width="750">
-    
+
     <Window.Resources>
         <Style x:Key="FontStyle" TargetType="TextBlock">
             <Setter Property="FontFamily"
@@ -60,6 +61,45 @@
                           Opacity="0.5" BlurRadius="23"
                           ShadowDepth="2"/>
 
+        <Style x:Key="ListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Width" Value="180" />
+            <Setter Property="BorderThickness" Value="3 0 0 0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <!--Font Style-->
+            <Setter Property="FontFamily" Value="./#Roboto Medium"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <!--Font Style-->
+            <!--Template-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="Bd" Value="#282c49"/>
+                                <Setter Property="BorderThickness" Value="3 0 0 0"/>
+                                <Setter Property="BorderBrush" Value="#282c49"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True" >
+                                <Setter Property="Background" TargetName="Bd" Value="#282c49"/>
+                                <Setter Property="BorderThickness" Value="3 0 0 0"/>
+                                <Setter Property="BorderBrush" Value="#48db58"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!--Template-->
+        </Style>
+
     </Window.Resources>
 
     <Grid>
@@ -72,56 +112,39 @@
             <Image Source="/Images/mint-logo.png"/>
             <Border Background="#3a415d" Height="30"/>
 
-            <ListView x:Name="buttonsList" Background="Transparent"
-                  BorderBrush="Transparent"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="FontFamily" Value="./#Roboto Medium"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="HorizontalAlignment" Value="Left"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontSize" Value="13"/>
-                        <Setter Property="Width" Value="180" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Red" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
+            <ListBox x:Name="buttonsList" Background="Transparent" BorderThickness="0"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ItemContainerStyle="{StaticResource ListBoxItemStyle}">
 
-                <ListViewItem>
+                <ListBoxItem Selected="ListBoxItem1_Selected">
                     <StackPanel Orientation="Horizontal">
                         <Decorator Child="{StaticResource CalendarIcon}" Margin="15 10 0 10"/>
                         <TextBlock Text="Overview" Margin="20 12 0 10"/>
                     </StackPanel>
-                </ListViewItem>
+                </ListBoxItem>
 
-                <ListViewItem>
+                <ListBoxItem Selected="ListBoxItem2_Selected">
                     <StackPanel Orientation="Horizontal">
                         <Decorator Child="{StaticResource TransactionsIcon}" Margin="15 10 0 10"/>
                         <TextBlock Text="Transactions" Margin="20 10 0 10"/>
                     </StackPanel>
-                </ListViewItem>
+                </ListBoxItem>
 
-                <ListViewItem>
+                <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Decorator Child="{StaticResource BudgetIcon}" Margin="15 10 0 10"/>
                         <TextBlock Text="Budget" Margin="20 10 0 10"/>
                     </StackPanel>
-                </ListViewItem>
+                </ListBoxItem>
 
 
-                <ListViewItem>
+                <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Decorator Child="{StaticResource GoalsIcon}"  Margin="15 10 0 10"/>
                         <TextBlock Text="Goals" Margin="20 10 0 10"/>
                     </StackPanel>
-                </ListViewItem>
-
-            </ListView>
+                </ListBoxItem>
+            </ListBox>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
@@ -137,6 +160,7 @@
                         <!-- enter term here -->
                         <TextBox Name="txtSearchBox" Background="Transparent"
                                  BorderThickness="0" BorderBrush="Transparent"
+                                 KeyDown="txtSearchBox_KeyDown"
                                  Style="{DynamicResource TextSearchBoxFontStyle}"
                                  CaretBrush="#fff" Width="370"/>
                     </Grid>
