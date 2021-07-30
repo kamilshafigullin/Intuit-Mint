@@ -6,11 +6,11 @@
         </Canvas.RenderTransform>
         <Canvas.Resources/>
         <!--Unknown tag: sodipodi:namedview-->
-        <Canvas Name="g4">
+        <Canvas>
             <Canvas.RenderTransform>
                 <ScaleTransform ScaleX="0.02929688" ScaleY="0.02929688"/>
             </Canvas.RenderTransform>
-            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2" Fill="#64d061">
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#64d061">
                 <Path.Data>
                     <PathGeometry Figures="M 446 40 H 400 V 16 C 400 7.164 392.837 0 384 0 375.163 0 368 7.164 368 16 V 40 H 144 V 16 C 144 7.164 136.837 0 128 0 119.163 0 112 7.164 112 16 V 40 H 66 C 29.607 40 0 69.607 0 106 v 340 c 0 36.393 29.607 66 66 66 h 380 c 36.393 0 66 -29.607 66 -66 V 106 C 512 69.607 482.393 40 446 40 Z M 66 72 h 46 v 16 c 0 8.836 7.163 16 16 16 8.837 0 16 -7.164 16 -16 V 72 h 224 v 16 c 0 8.836 7.163 16 16 16 8.837 0 16 -7.164 16 -16 V 72 h 46 c 18.748 0 34 15.252 34 34 v 38 H 32 V 106 C 32 87.252 47.252 72 66 72 Z M 446 480 H 66 C 47.252 480 32 464.748 32 446 V 176 h 448 v 270 c 0 18.748 -15.252 34 -34 34 z" FillRule="NonZero"/>
                 </Path.Data>
@@ -28,8 +28,8 @@
                 <MatrixTransform Matrix="0.02344115 0 0 0.02344115 -5.8016728e-6 2.4413971e-4"/>
             </Canvas.RenderTransform>
             <Canvas Name="_x35__40_">
-                <Canvas Name="g4">
-                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path2" Fill="#64d061">
+                <Canvas>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#64d061">
                         <Path.Data>
                             <PathGeometry Figures="m 303.4 319.03 c 0.585 -7.521 -1.701 -15.203 -7.469 -20.944 L 58.786 61.339 c -10.472 -10.445 -35.43 -10.445 -45.902 0 -10.473 10.446 -10.473 27.378 0 37.85 L 233.098 319.03 20.884 538.872 c -10.473 10.445 -10.473 27.377 0 37.823 10.473 10.445 27.431 10.445 37.902 0 L 295.932 339.948 c 5.767 -5.741 8.027 -13.395 7.468 -20.918 z M 567.521 298.086 276.765 7.834 c -10.473 -10.445 -35.431 -10.445 -45.903 0 -10.473 10.446 -10.473 27.404 0 37.823 L 504.687 319.03 230.861 592.377 c -10.473 10.446 -10.473 27.377 0 37.85 10.473 10.446 35.431 10.446 45.903 0 L 567.493 339.976 c 5.768 -5.741 8.027 -13.423 7.442 -20.945 0.613 -7.522 -1.673 -15.204 -7.414 -20.945 z" FillRule="NonZero"/>
                         </Path.Data>
@@ -45,7 +45,7 @@
         </Canvas.RenderTransform>
         <Canvas.Resources/>
         <!--Unknown tag: sodipodi:namedview-->
-        <Canvas Name="g4034">
+        <Canvas>
             <Canvas.RenderTransform>
                 <MatrixTransform Matrix="0.02929971 0 0 0.02929974 -0.00824545 0"/>
             </Canvas.RenderTransform>
