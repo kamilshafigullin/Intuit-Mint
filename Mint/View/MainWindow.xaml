@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mint"
+        xmlns:view="clr-namespace:Mint.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="750">
-
+        Title="MainWindow" Height="550" Width="750">
+    
     <Window.Resources>
-        <Style x:Key="font_style" TargetType="TextBlock">
+        <Style x:Key="FontStyle" TargetType="TextBlock">
             <Setter Property="FontFamily"
                     Value="./#Roboto Medium"/>
 
@@ -24,8 +25,43 @@
             <Setter Property="FontSize"
                     Value="13"/>
         </Style>
+
+        <Style x:Key="TextSearchBoxFontStyle" TargetType="TextBox">
+            <Setter Property="FontFamily"
+                    Value="./#Roboto Medium"/>
+
+            <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+
+            <Setter Property="HorizontalAlignment"
+                    Value="Left"/>
+
+            <Setter Property="Foreground"
+                    Value="White"/>
+
+            <Setter Property="FontSize"
+                    Value="13"/>
+        </Style>
+
+        <Style x:Key="SearchBorderStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#64d061" Offset="0.35" />
+                        <GradientStop Color="#3aaf6c" Offset="1.1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <view:BoolToVisibilityConverter x:Key="MyBoolToVisibilityConverter" />
+
+        <DropShadowEffect x:Key="CredentialsRectEffect" Direction="-55" 
+                          Opacity="0.5" BlurRadius="23"
+                          ShadowDepth="2"/>
+
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180"/>
@@ -39,42 +75,74 @@
             <ListView x:Name="buttonsList" Background="Transparent"
                   BorderBrush="Transparent"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+                
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="FontFamily" Value="./#Roboto Medium"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="13"/>
                         <Setter Property="Width" Value="180" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </ListView.ItemContainerStyle>
-                
+
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/overview_icon.png" Width="15" Margin="15 10 0 10"/>
-                        <TextBlock Text="Overview" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                        <Decorator Child="{StaticResource CalendarIcon}" Margin="15 10 0 10"/>
+                        <TextBlock Text="Overview" Margin="20 12 0 10"/>
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/transaction_icon.png" Width="15" Margin="15 10 0 10"/>
-                        <TextBlock Text="Transactions" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                        <Decorator Child="{StaticResource TransactionsIcon}" Margin="15 10 0 10"/>
+                        <TextBlock Text="Transactions" Margin="20 10 0 10"/>
                     </StackPanel>
                 </ListViewItem>
 
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/bell_icon.png" Width="15" Margin="15 10 0 10"/>
-                        <TextBlock Text="Budget" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                        <Decorator Child="{StaticResource BudgetIcon}" Margin="15 10 0 10"/>
+                        <TextBlock Text="Budget" Margin="20 10 0 10"/>
                     </StackPanel>
                 </ListViewItem>
 
+
                 <ListViewItem>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Images/transaction_icon.png" Width="15" Margin="15 10 0 10"/>
-                        <TextBlock Text="Transactions" Margin="20 10 0 10" Style="{StaticResource font_style}"/>
+                        <Decorator Child="{StaticResource GoalsIcon}"  Margin="15 10 0 10"/>
+                        <TextBlock Text="Goals" Margin="20 10 0 10"/>
                     </StackPanel>
                 </ListViewItem>
 
             </ListView>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1">
+            <Border Height="55" Style="{StaticResource SearchBorderStyle}">
+                <StackPanel Orientation="Horizontal">
+                    <Decorator Child="{StaticResource SearchIcon}" VerticalAlignment="Center" Margin="35 0 0 0"/>
+                    <Grid VerticalAlignment="Center" Height="25" Margin="10 2 0 0">
+                        <!-- overlay with hint text -->
+                        <TextBlock Margin="5 2 0 0" Text="Hi John, click here to search something..." Style="{StaticResource FontStyle}"
+                                   Visibility="{Binding ElementName=txtSearchBox, 
+                            Path=Text.IsEmpty, Converter={StaticResource MyBoolToVisibilityConverter}}" 
+                                   IsHitTestVisible="False"/>
+                        <!-- enter term here -->
+                        <TextBox Name="txtSearchBox" Background="Transparent"
+                                 BorderThickness="0" BorderBrush="Transparent"
+                                 Style="{DynamicResource TextSearchBoxFontStyle}"
+                                 CaretBrush="#fff" Width="370"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+            <Frame x:Name="frame" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" NavigationUIVisibility="Hidden"/>
         </StackPanel>
     </Grid>
 </Window>
